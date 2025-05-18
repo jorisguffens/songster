@@ -23,6 +23,7 @@
         print_window.document.writeln("</html>")
         print_window.document.close();
         print_window.print();
+        print_window.close();
     }
 
     const page_size = 20;
@@ -40,17 +41,16 @@
             {#each { length: pages } as _, page}
                 {@const offset = page * page_size}
                 <div class="grid grid-cols-4 grid-rows-5 border-1 border-base-200 bg-base-100 break-after-page">
-                    {#each tracks.slice(offset, offset + page_size) as track_item}
-                        {@const track = track_item.track}
+                    {#each tracks.slice(offset, offset + page_size) as track}
                         <div class="flex flex-col gap-4 justify-around p-4 text-center border-1 border-base-200 aspect-square">
                             <div class="h-10 text-sm">
-                                {track.name}
+                                {track.title}
                             </div>
                             <div class="flex items-center justify-center font-semibold text-4xl">
-                                {new Date(track.album.release_date).getFullYear()}
+                                {track.year}
                             </div>
                             <div class="flex items-end justify-center h-10 text-sm">
-                                {track.artists.map(a => a.name).join(", ")}
+                                {track.artist}
                             </div>
                         </div>
                     {/each}

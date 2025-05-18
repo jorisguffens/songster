@@ -26,6 +26,7 @@
 		"@spotify/web-api-ts-sdk": "^1.2.0",
 		"@tailwindcss/vite": "^4.1.7",
 		"awilix": "^12.0.5",
+		"csv-parser": "^3.2.0",
 		"html5-qrcode": "^2.3.8",
 		"log4js": "^6.9.1",
 		"qrcode": "^1.5.4",
