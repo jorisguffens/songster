@@ -6,6 +6,7 @@ export class GenerateLoadController {
 
     constructor(
         private readonly spotifyPlaylistTracksUseCase: SpotifyPlaylistTracksUseCase,
+        private readonly VAR_APP_PLAY_URL: string,
     ) {
     }
 
@@ -17,7 +18,7 @@ export class GenerateLoadController {
 
         const tracks = await Array.fromAsync(this.spotifyPlaylistTracksUseCase.getPlaylistTracks(playlist_id));
         const qrcodes = await Promise.all(tracks.map((track) => {
-            return QrGenerator.generateAsDataUrl(track.track.uri);
+            return QrGenerator.generateAsDataUrl(`${this.VAR_APP_PLAY_URL}?track=${track.track.uri}`);
         }));
 
         return {

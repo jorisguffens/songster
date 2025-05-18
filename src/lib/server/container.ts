@@ -18,6 +18,7 @@ export function registerEnvironment(container: awilix.AwilixContainer, env: Reco
     container.register({
         VAR_SPOTIFY_CLIENT_ID: awilix.asFunction(() => assertNonNull(env.PUBLIC_SPOTIFY_CLIENT_ID)),
         VAR_SPOTIFY_CLIENT_SECRET: awilix.asFunction(() => assertNonNull(env.SECRET_SPOTIFY_CLIENT_SECRET)),
+        VAR_APP_PLAY_URL: awilix.asFunction(() => assertNonNull(env.PUBLIC_APP_PLAY_URL)),
     });
 }
 
