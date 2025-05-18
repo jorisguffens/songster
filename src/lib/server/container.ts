@@ -16,7 +16,7 @@ export function registerInjections(container: awilix.AwilixContainer) {
 
 export function registerEnvironment(container: awilix.AwilixContainer, env: Record<string, string | undefined>) {
     container.register({
-        VAR_SPOTIFY_CLIENT_ID: awilix.asFunction(() => assertNonNull(env.SECRET_SPOTIFY_CLIENT_ID)),
+        VAR_SPOTIFY_CLIENT_ID: awilix.asFunction(() => assertNonNull(env.PUBLIC_SPOTIFY_CLIENT_ID)),
         VAR_SPOTIFY_CLIENT_SECRET: awilix.asFunction(() => assertNonNull(env.SECRET_SPOTIFY_CLIENT_SECRET)),
     });
 }
