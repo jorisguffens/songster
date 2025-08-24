@@ -32,9 +32,20 @@
         })
     });
 
-    function play(track_id: string) {
+    async function play(track_id: string) {
         current_track = track_id;
-        sdk.player.startResumePlayback("", undefined, [track_id]);
+        const { devices } = await sdk.player.getAvailableDevices();
+        let active_device = devices.find(d => d.is_active);
+        if ( !active_device ) {
+            active_device = devices[0];
+        }
+
+        if ( !active_device || !active_device.id ) {
+            console.warn("No available devices found");
+            return;
+        }
+
+        await sdk.player.startResumePlayback(active_device.id, undefined, [track_id]);
     }
 
     function onScanSuccess(content: string) {
